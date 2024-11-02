@@ -59,6 +59,7 @@ Tab:AddTextbox({
         end
 
         deleteModule("001_", "HouseDoors")
+	deleteModule("Fake", "RoomDoor")
 	
 	end	  
 })
