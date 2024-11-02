@@ -1,12 +1,13 @@
 -- BrookHell by TinyTosha
 
-local version = "v0.2235 gold exp"
+local version = "v0.30637 diamond exp"
 
 local LocalPlrName = game.Players.LocalPlayer.Character.Name
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 local Window = OrionLib:MakeWindow({Name = "BrookHell by TinyTosha", HidePremium = false, SaveConfig = false, ConfigFolder = "Delete Me!"})
+
 
 OrionLib:MakeNotification({
 	Name = "BrookHell",
@@ -40,7 +41,7 @@ Tab:AddSection({
 })
 
 Tab:AddTextbox({
-	Name = "Unban house",
+	Name = "Unban house (Write owner username)",
 	Default = "",
 	TextDisappear = false,
 	Callback = function(name)
@@ -58,7 +59,7 @@ Tab:AddTextbox({
 	end	  
 })
 Tab:AddTextbox({
-	Name = "Remove Doors",
+	Name = "Remove Doors (Write owner username)",
 	Default = "",
 	TextDisappear = false,
 	Callback = function(name)
@@ -96,7 +97,7 @@ Tab:AddSection({
 
 
 Tab:AddTextbox({
-	Name = "Go to Player",
+	Name = "Player Name",
 	Default = "",
 	TextDisappear = false,
 	Callback = function(name)
@@ -111,6 +112,56 @@ Tab:AddTextbox({
 		})
 	end	  
 })
+
+
+Tab:AddSection({
+	Name = "Player"
+})
+
+Tab:AddSlider({
+	Name = "Player speed",
+	Min = 8,
+	Max = 350,
+	Default = 16,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Speed",
+	Callback = function(Value)
+		local Player = game.Players.LocalPlayer
+		Player.Character.Humanoid.WalkSpeed = Value
+	end    
+})
+
+Tab:AddButton({
+	Name = "Reset player speed",
+	Callback = function()
+        local Player = game.Players.LocalPlayer
+		Player.Character.Humanoid.WalkSpeed = 16
+  	end    
+})
+
+Tab:AddSlider({
+	Name = "Player Jump Power",
+	Min = 25,
+	Max = 500,
+	Default = 50,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Jump Power",
+	Callback = function(Value)
+		local Player = game.Players.LocalPlayer
+		Player.Character.Humanoid.JumpPower = Value
+	end    
+})
+
+Tab:AddButton({
+	Name = "Reset Jump Power",
+	Callback = function()
+        local Player = game.Players.LocalPlayer
+		Player.Character.Humanoid.JumpPower = 50
+  	end    
+})
+
 DevTab:AddButton({
 	Name = "Dark Dex v3",
 	Callback = function()
