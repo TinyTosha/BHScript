@@ -35,6 +35,10 @@ local DevTab = Window:MakeTab({
 CTab:AddLabel("BrookHell By TinyTosha")
 CTab:AddLabel("Version: " ..version)
 
+Tab:AddSection({
+	Name = "House"
+})
+
 Tab:AddTextbox({
 	Name = "Unban house",
 	Default = "",
@@ -85,6 +89,11 @@ Tab:AddTextbox({
 			
 	end	  
 })
+
+Tab:AddSection({
+	Name = "Teleport"
+})
+
 
 Tab:AddTextbox({
 	Name = "Go to Player",
