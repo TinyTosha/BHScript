@@ -41,9 +41,16 @@ Tab:AddTextbox({
 	TextDisappear = false,
 	Callback = function(name)
 		local PlrName = name
-        local HouseNum = game.Workspace["001_Lots"][PlrName .."House"].Number.Number.Value
+        	local HouseNum = game.Workspace["001_Lots"][PlrName .."House"].Number.Number.Value
 
-        game.Workspace["001_Lots"][PlrName .."House"].HousePickedByPlayer.HouseModel["BannedBlock" ..HouseNum]:Destroy()
+        	game.Workspace["001_Lots"][PlrName .."House"].HousePickedByPlayer.HouseModel["BannedBlock" ..HouseNum]:Destroy()
+
+		OrionLib:MakeNotification({
+			Name = "BrookHell",
+			Content = "Unbanned (Owner: " ..PlrName .." House num: " ..HouseNum .." )!",
+			Image = "rbxassetid://4483345998",
+			Time = 5
+		})
 	end	  
 })
 Tab:AddTextbox({
@@ -51,22 +58,32 @@ Tab:AddTextbox({
 	Default = "Name",
 	TextDisappear = false,
 	Callback = function(name)
-        local PlrName = name
-        local HouseNum = game.Workspace["001_Lots"][PlrName .."House"].Number.Number.Value
+        	local PlrName = name
+        	local HouseNum = game.Workspace["001_Lots"][PlrName .."House"].Number.Number.Value
 
-        local function deleteModule(namedmodule, module)
-            game.Workspace["001_Lots"][PlrName .."House"].HousePickedByPlayer.HouseModel[namedmodule ..module]:Destroy() 
-        end
+        	local function deleteModule(namedmodule, module)
+            		game.Workspace["001_Lots"][PlrName .."House"].HousePickedByPlayer.HouseModel[namedmodule ..module]:Destroy() 
+        	end
 
-        deleteModule("001_", "HouseDoors")
-	deleteModule("", "FakeRoomDoor")
+        	deleteModule("001_", "HouseDoors")
+		deleteModule("", "FakeRoomDoor")
+
 	
+		OrionLib:MakeNotification({
+			Name = "BrookHell",
+			Content = "Removed doors (Owner: " ..PlrName .." House num: " ..HouseNum .." )!",
+			Image = "rbxassetid://4483345998",
+			Time = 5
+		})
+			
 	end	  
 })
 
 DevTab:AddButton({
 	Name = "Dark Dex v3",
 	Callback = function()
-      	loadstring(game:HttpGet('https://raw.githubusercontent.com/TinyTosha/BHScript/refs/heads/main/ddv3.lua'))()
+      		loadstring(game:HttpGet('https://raw.githubusercontent.com/TinyTosha/BHScript/refs/heads/main/ddv3.lua'))()
   	end    
 })
+
+OrionLib:Init()
