@@ -87,12 +87,13 @@ Tab:AddTextbox({
 })
 
 Tab:AddTextbox({
-	Name = "Go to player",
+	Name = "Go to Player",
 	Default = "",
 	TextDisappear = false,
-	Callback = function(name)
+	Callback = function(Value)
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace[name]
-	end
+	end	  
+})
 })
 DevTab:AddButton({
 	Name = "Dark Dex v3",
