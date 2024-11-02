@@ -1,5 +1,8 @@
 -- BrookHell by TinyTosha
 
+local Version = "v0.2"
+
+local LocalPlrName = game.Players.LocalPlayer.Character.Name
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
@@ -10,6 +13,12 @@ OrionLib:MakeNotification({
 	Content = "Script by TinyTosha! UILib: Orion",
 	Image = "rbxassetid://4483345998",
 	Time = 5
+})
+
+local CTab = Window:MakeTab({
+	Name = "Info",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
 })
 
 local Tab = Window:MakeTab({
@@ -23,8 +32,11 @@ local DevTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-
-Tab:AddLabel("Script By TinyTosha")
+CTab:AddLabel("     BrookHell     ")
+CTab:AddLabel("Script By TinyTosha")
+CTab:AddLabel("Version: " ..version)
+CTab:AddLabel("")
+CTab:AddLabel("Ty for using " ..LocalPlrName .."!")
 
 Tab:AddTextbox({
 	Name = "Unban house",
