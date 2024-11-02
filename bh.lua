@@ -1,6 +1,6 @@
 -- BrookHell by TinyTosha
 
-local version = "v0.2121 gold exp"
+local version = "v0.2235 gold exp"
 
 local LocalPlrName = game.Players.LocalPlayer.Character.Name
 
@@ -101,7 +101,6 @@ Tab:AddTextbox({
 			Time = 5
 		})
 	end	  
-})
 })
 DevTab:AddButton({
 	Name = "Dark Dex v3",
