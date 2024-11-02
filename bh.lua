@@ -62,7 +62,12 @@ Tab:AddTextbox({
         	local HouseNum = game.Workspace["001_Lots"][PlrName .."House"].Number.Number.Value
 
         	local function deleteModule(namedmodule, module)
-            		game.Workspace["001_Lots"][PlrName .."House"].HousePickedByPlayer.HouseModel[namedmodule ..module]:Destroy() 
+			local find = game.Workspace["001_Lots"][PlrName .."House"].HousePickedByPlayer.HouseModel:FindFirstChild(namedmodule ..module)
+            		if find then
+
+				find:Destroy()
+					
+			end
         	end
 
         	deleteModule("001_", "HouseDoors")
