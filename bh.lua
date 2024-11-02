@@ -1,6 +1,7 @@
 -- BrookHell by TinyTosha
 
-local Version = "v0.2"
+local version = "v0.2"
+local eversion = "v0.2121 gold exp"
 
 local LocalPlrName = game.Players.LocalPlayer.Character.Name
 
@@ -32,10 +33,10 @@ local DevTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-CTab:AddLabel("     BrookHell     ")
+CTab:AddLabel("BrookHell " ..version)
 CTab:AddLabel("Script By TinyTosha")
-CTab:AddLabel("Version: " ..version)
-CTab:AddLabel("")
+CTab:AddLabel("Version: " ..eversion)
+CTab:AddLabel("  ")
 CTab:AddLabel("Ty for using " ..LocalPlrName .."!")
 
 Tab:AddTextbox({
