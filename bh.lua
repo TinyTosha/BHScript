@@ -1,7 +1,6 @@
 -- BrookHell by TinyTosha
 
-local version = "v0.2"
-local eversion = "v0.2121 gold exp"
+local version = "v0.2121 gold exp"
 
 local LocalPlrName = game.Players.LocalPlayer.Character.Name
 
@@ -33,11 +32,8 @@ local DevTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-CTab:AddLabel("BrookHell " ..version)
-CTab:AddLabel("Script By TinyTosha")
-CTab:AddLabel("Version: " ..eversion)
-CTab:AddLabel("  ")
-CTab:AddLabel("Ty for using " ..LocalPlrName .."!")
+CTab:AddLabel("BrookHell By TinyTosha")
+CTab:AddLabel("Version: " ..version)
 
 Tab:AddTextbox({
 	Name = "Unban house",
@@ -58,11 +54,12 @@ Tab:AddTextbox({
         local PlrName = name
         local HouseNum = game.Workspace["001_Lots"][PlrName .."House"].Number.Number.Value
 
-        local function deleteModule(module)
-            game.Workspace["001_Lots"][PlrName .."House"].HousePickedByPlayer.HouseModel["001_" ..module]:Destroy() 
+        local function deleteModule(namedmodule, module)
+            game.Workspace["001_Lots"][PlrName .."House"].HousePickedByPlayer.HouseModel[namedmodule ..module]:Destroy() 
         end
 
-        deleteModule("HouseDoors")
+        deleteModule("001_", "HouseDoors")
+	
 	end	  
 })
 
