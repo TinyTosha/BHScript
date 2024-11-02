@@ -6,7 +6,7 @@ local LocalPlrName = game.Players.LocalPlayer.Character.Name
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
-local Window = OrionLib:MakeWindow({Name = "BrookHell by TinyTosha", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "BrookHell by TinyTosha", HidePremium = false, SaveConfig = false, ConfigFolder = "Delete Me!"})
 
 OrionLib:MakeNotification({
 	Name = "BrookHell",
@@ -66,7 +66,9 @@ Tab:AddTextbox({
         	end
 
         	deleteModule("001_", "HouseDoors")
+		deleteModule("", "HouseDoorNotLocking")
 		deleteModule("", "FakeRoomDoor")
+		
 
 	
 		OrionLib:MakeNotification({
