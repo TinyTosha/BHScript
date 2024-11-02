@@ -37,7 +37,7 @@ CTab:AddLabel("Version: " ..version)
 
 Tab:AddTextbox({
 	Name = "Unban house",
-	Default = "Name",
+	Default = "",
 	TextDisappear = false,
 	Callback = function(name)
 		local PlrName = name
@@ -55,7 +55,7 @@ Tab:AddTextbox({
 })
 Tab:AddTextbox({
 	Name = "Remove Doors",
-	Default = "Name",
+	Default = "",
 	TextDisappear = false,
 	Callback = function(name)
         	local PlrName = name
@@ -86,6 +86,14 @@ Tab:AddTextbox({
 	end	  
 })
 
+Tab:AddTextbox({
+	Name = "Go to player",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(name)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace[name]
+	end
+})
 DevTab:AddButton({
 	Name = "Dark Dex v3",
 	Callback = function()
