@@ -1,6 +1,6 @@
 -- BrookHell by TinyTosha
 
-local version = "v0.30637 diamond exp"
+local version = "v0.4500 silver nextgen exp"
 
 local LocalPlrName = game.Players.LocalPlayer.Character.Name
 
@@ -8,6 +8,7 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 
 local Window = OrionLib:MakeWindow({Name = "BrookHell by TinyTosha", HidePremium = false, SaveConfig = false, ConfigFolder = "Delete Me!"})
 
+getgenv().Username = ""
 
 OrionLib:MakeNotification({
 	Name = "BrookHell",
@@ -37,15 +38,28 @@ CTab:AddLabel("BrookHell By TinyTosha")
 CTab:AddLabel("Version: " ..version)
 
 Tab:AddSection({
-	Name = "House"
+	Name = "Username"
 })
 
 Tab:AddTextbox({
-	Name = "Unban house (Write owner username)",
+	Name = "Enter Username",
 	Default = "",
 	TextDisappear = false,
 	Callback = function(name)
-		local PlrName = name
+		getgenv().Username = name
+
+        OrionLib:MakeNotification({
+	        Name = "BrookHell",
+	        Content = "Username set " ..getgenv().Username .."!",
+	        Image = "rbxassetid://4483345998",
+	        Time = 5
+        })
+	end	  
+})
+Tab:AddButton({
+	Name = "Unban",
+	Callback = function()
+        local PlrName = getgenv().Username
         	local HouseNum = game.Workspace["001_Lots"][PlrName .."House"].Number.Number.Value
 
         	game.Workspace["001_Lots"][PlrName .."House"].HousePickedByPlayer.HouseModel["BannedBlock" ..HouseNum]:Destroy()
@@ -56,14 +70,13 @@ Tab:AddTextbox({
 			Image = "rbxassetid://4483345998",
 			Time = 5
 		})
-	end	  
+  	end    
 })
-Tab:AddTextbox({
-	Name = "Remove Doors (Write owner username)",
-	Default = "",
-	TextDisappear = false,
-	Callback = function(name)
-        	local PlrName = name
+
+Tab:AddButton({
+	Name = "Remove Doors",
+	Callback = function()
+        local PlrName = getgenv().Username
         	local HouseNum = game.Workspace["001_Lots"][PlrName .."House"].Number.Number.Value
 
         	local function deleteModule(namedmodule, module)
@@ -87,31 +100,29 @@ Tab:AddTextbox({
 			Image = "rbxassetid://4483345998",
 			Time = 5
 		})
-			
-	end	  
+  	end    
 })
+
 
 Tab:AddSection({
 	Name = "Teleport"
 })
 
-
-Tab:AddTextbox({
-	Name = "Player Name",
-	Default = "",
-	TextDisappear = false,
-	Callback = function(name)
-		local Player = game.Players.LocalPlayer
-		Player.Character.HumanoidRootPart.CFrame = game.Workspace[name].HumanoidRootPart.CFrame
+Tab:AddButton({
+	Name = "Teleport",
+	Callback = function()
+        local Player = game.Players.LocalPlayer
+		Player.Character.HumanoidRootPart.CFrame = game.Workspace[getgenv().Username].HumanoidRootPart.CFrame
 
 		OrionLib:MakeNotification({
 			Name = "BrookHell",
-			Content = "Teleported to " ..name .."!",
+			Content = "Teleported to " ..getgenv().Username .."!",
 			Image = "rbxassetid://4483345998",
 			Time = 5
 		})
-	end	  
+  	end    
 })
+
 
 
 Tab:AddSection({
