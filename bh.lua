@@ -1,14 +1,24 @@
 -- BrookHell by TinyTosha
 
-local version = "v0.4500 silver nextgen exp"
+local version = "v0.5250 gey exp"
 
 local LocalPlrName = game.Players.LocalPlayer.Character.Name
+local LocalPlr = game.Players.LocalPlayer.Character
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
-local Window = OrionLib:MakeWindow({Name = "BrookHell by TinyTosha", HidePremium = false, SaveConfig = false, ConfigFolder = "Delete Me!"})
+local Window = OrionLib:MakeWindow({
+    Name = "BrookHell by TinyTosha", 
+    HidePremium = false, 
+    SaveConfig = false, 
+    ConfigFolder = "Delete Me!",
+
+    IntroText = " BrookHell " ..version,
+})
 
 getgenv().Username = ""
+
+
 
 OrionLib:MakeNotification({
 	Name = "BrookHell",
@@ -18,13 +28,18 @@ OrionLib:MakeNotification({
 })
 
 local CTab = Window:MakeTab({
-	Name = "Info",
+	Name = "Info, Settings",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 local Tab = Window:MakeTab({
-	Name = "Main",
+	Name = "Main Tab",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local ATTab = Window:MakeTab({
+	Name = "Adv. Teleport",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -34,8 +49,12 @@ local DevTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
+CTab:AddSection({Name = "Info"})
+
 CTab:AddLabel("BrookHell By TinyTosha")
 CTab:AddLabel("Version: " ..version)
+
+CTab:AddSection({Name = "Settings"})
 
 Tab:AddSection({
 	Name = "Username"
@@ -171,6 +190,38 @@ Tab:AddButton({
         local Player = game.Players.LocalPlayer
 		Player.Character.Humanoid.JumpPower = 50
   	end    
+})
+
+ATTab:AddDropdown({
+	Name = "Teleport Locatiom",
+	Default = "In dev!",
+	Options = {"In dev, ", "sorry"},
+	Callback = function(Value)
+		print(Value)
+	end    
+})
+
+ATTab:AddBind({
+	Name = "Kill (ShoppingCart)",
+	Default = "Click to set",
+	Hold = false,
+	Callback = function()
+        local expos = nil
+        local Player = nil
+
+        expos = LocalPlr.HumanoidRootPart.CFrame
+        Player = game.Players.LocalPlayer
+
+
+		Player.Character.HumanoidRootPart.CFrame = CFrame.new(0, -385, 0)
+        wait(0.2)
+        Player.Character.Humanoid:UnequipTools()
+        wait(0.4)
+        Player.Character.HumanoidRootPart.CFrame = expos
+
+        Player = nil
+        expos = nil
+	end    
 })
 
 DevTab:AddButton({
